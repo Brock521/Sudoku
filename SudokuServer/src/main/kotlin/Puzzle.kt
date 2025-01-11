@@ -48,23 +48,44 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
         }
     }
 
-    fun swapRows(rowA: Int, rowB: Int, newPuzzle: Array<Array<String>>): Array<Array<String>> {
-        val temp = newPuzzle[rowA]
-        newPuzzle[rowA] = newPuzzle[rowB]
-        newPuzzle[rowB] = temp
+    fun swapRows(blockA: Int, blockB: Int, newPuzzle: Array<Array<String>>): Array<Array<String>> {
+        //We can not swap individual rows but will have to swap 9x3 rows...Ie) if the puzzle is made up of 9 chunks of  3x3 grids can we need to swap 3 3x3 grids for a whole row.
+
+        if (blockA == blockB) {
+            return newPuzzle
+        }
+
+        for (i in 0..2) {
+            val temp = newPuzzle[blockA * 3 + i]
+            newPuzzle[blockA * 3 + i] = newPuzzle[blockB * 3 + i]
+            newPuzzle[blockB * 3 + i] = temp
+        }
         return newPuzzle
     }
 
-    fun swapColumns(colA: Int, colB: Int, newPuzzle: Array<Array<String>>): Array<Array<String>> {
+    fun swapColumns(blockA: Int, blockB: Int, newPuzzle: Array<Array<String>>): Array<Array<String>> {
+        //We can not swap individual rows but will have to swap 3x9 rows...Ie) if the puzzle is made up of 9 chunks of  3x3 grids can we need to swap 3 3x3 grids for a whole row.
+
+        if (blockA == blockB) {
+            return newPuzzle
+        }
+
         for (row in newPuzzle) {
-            val temp = row[colA]
-            row[colA] = row[colB]
-            row[colB] = temp
+            for (i in 0..2) {
+                val temp = row[blockA * 3 + i]
+                row[blockA * 3 + i] = row[blockB * 3 + i]
+                row[blockB * 3 + i] = temp
+            }
         }
         return newPuzzle
     }
 
     fun swapSymbols(symbolA: String, symbolB: String, newPuzzle: Array<Array<String>>): Array<Array<String>> {
+
+        if(symbolA == symbolB){
+            return newPuzzle
+        }
+
         for (row in newPuzzle) {
             for (col in row.indices) {
                 when (row[col]) {
@@ -81,8 +102,8 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
         val numRandomChanges = (1..25).random()
 
         val actions = listOf<(Array<Array<String>>) -> Array<Array<String>>>(
-            { newPuzzle -> swapRows((0..8).random(), (0..8).random(), newPuzzle) },
-            { newPuzzle -> swapColumns((0..8).random(), (0..8).random(), newPuzzle) },
+            { newPuzzle -> swapRows((0..2).random(), (0..2).random(), newPuzzle) },
+            { newPuzzle -> swapColumns((0..2).random(), (0..2).random(), newPuzzle) },
             { newPuzzle -> swapSymbols((1..9).random().toString(), (1..9).random().toString(), newPuzzle) }
         )
 
@@ -99,7 +120,12 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
 
 fun main(){
     val puzzleInst = Puzzle()
-    puzzleInst.printPuzzle()
-    puzzleInst.randomizePuzzle()
-    puzzleInst.printPuzzle()
+        puzzleInst.printPuzzle()
+    println();
+    for(num in 0..5) {
+        puzzleInst.randomizePuzzle()
+        puzzleInst.printPuzzle()
+        println();
+    }
+
 }
