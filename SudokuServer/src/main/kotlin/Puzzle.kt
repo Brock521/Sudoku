@@ -13,7 +13,7 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
             }
         }
     }
-    //test
+
     // Return the current puzzle grid
     fun getGrid(): Array<Array<String>> = puzzle
 
@@ -46,7 +46,6 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
         }
     }
 
-    // Example manipulation methods
     fun swapRows(rowA: Int, rowB: Int): Array<Array<String>> {
         val newPuzzle = puzzle.map { it.clone() }.toTypedArray()
         val temp = newPuzzle[rowA]
