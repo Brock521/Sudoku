@@ -1,3 +1,5 @@
+package com.example.puzzle;
+
 class Puzzle(private val seed: String = "534678912672195348198342567859761423426853791713924856961537284287419635345286179") {
 
     private val puzzle: Array<Array<String>> = loadSeed(seed)
@@ -46,16 +48,14 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
         }
     }
 
-    fun swapRows(rowA: Int, rowB: Int): Array<Array<String>> {
-        val newPuzzle = puzzle.map { it.clone() }.toTypedArray()
+    fun swapRows(rowA: Int, rowB: Int, newPuzzle: Array<Array<String>>): Array<Array<String>> {
         val temp = newPuzzle[rowA]
         newPuzzle[rowA] = newPuzzle[rowB]
         newPuzzle[rowB] = temp
         return newPuzzle
     }
 
-    fun swapColumns(colA: Int, colB: Int): Array<Array<String>> {
-        val newPuzzle = puzzle.map { it.clone() }.toTypedArray()
+    fun swapColumns(colA: Int, colB: Int, newPuzzle: Array<Array<String>>): Array<Array<String>> {
         for (row in newPuzzle) {
             val temp = row[colA]
             row[colA] = row[colB]
@@ -64,8 +64,7 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
         return newPuzzle
     }
 
-    fun swapSymbols(symbolA: String, symbolB: String): Array<Array<String>> {
-        val newPuzzle = puzzle.map { it.clone() }.toTypedArray()
+    fun swapSymbols(symbolA: String, symbolB: String, newPuzzle: Array<Array<String>>): Array<Array<String>> {
         for (row in newPuzzle) {
             for (col in row.indices) {
                 when (row[col]) {
@@ -76,4 +75,31 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
         }
         return newPuzzle
     }
+
+    fun randomizePuzzle() {
+        val newPuzzle = puzzle.map { it.clone() }.toTypedArray()
+        val numRandomChanges = (1..25).random()
+
+        val actions = listOf<(Array<Array<String>>) -> Array<Array<String>>>(
+            { newPuzzle -> swapRows((0..8).random(), (0..8).random(), newPuzzle) },
+            { newPuzzle -> swapColumns((0..8).random(), (0..8).random(), newPuzzle) },
+            { newPuzzle -> swapSymbols((1..9).random().toString(), (1..9).random().toString(), newPuzzle) }
+        )
+
+        for (iteration in 1..numRandomChanges) {
+            val action = actions.random()  // Select a random action
+            action(newPuzzle)  // Apply the selected action to the current puzzle
+        }
+
+        setGrid(newPuzzle);
+
+    }
+
+}
+
+fun main(){
+    val puzzleInst = Puzzle()
+    puzzleInst.printPuzzle()
+    puzzleInst.randomizePuzzle()
+    puzzleInst.printPuzzle()
 }
