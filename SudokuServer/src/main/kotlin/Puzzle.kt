@@ -97,6 +97,16 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
         return newPuzzle
     }
 
+    fun puzzleToSeed(): String {
+        val builder = StringBuilder()
+        for (row in puzzle) {
+            for (cell in row) {
+                builder.append(cell)
+            }
+        }
+        return builder.toString()
+    }
+
     fun randomizePuzzle() {
         val newPuzzle = puzzle.map { it.clone() }.toTypedArray()
         val numRandomChanges = (1..25).random()

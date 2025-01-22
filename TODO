@@ -1,0 +1,16 @@
+Need a class to obsfucate the puzzle
+This will take a puzzle and generate a new 2d array that has the values plus a boolean take to represent visibility/changeability
+
+
+Genetic Algorithm
+    fitness function
+    population size
+    probability of crossover
+    probability of mutation
+    number of elite?
+
+I guess this will have puzzles as parents a child will be a merged puzzle
+How do I represent the puzzle:
+    solutionString -> list/array:Need to add function to verify column, row and section conditions and used in the fitness function
+                      How do I crossover puzzles? Fixed values can not change, we iterate over the parent grids and
+                      do a 50/50 chance to select either one
