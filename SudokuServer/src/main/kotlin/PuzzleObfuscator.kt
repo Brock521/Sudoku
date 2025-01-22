@@ -84,9 +84,3 @@ class PuzzleObfuscator(puzzleSeed: String) {
     }
 
 }
-
-fun main(){
-    val testPuzzle = Puzzle();
-    val test = PuzzleObfuscator(testPuzzle.puzzleToSeed())
-    test.printObfuscatedPuzzle()
-}

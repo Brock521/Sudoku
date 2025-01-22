@@ -127,15 +127,3 @@ class Puzzle(private val seed: String = "534678912672195348198342567859761423426
     }
 
 }
-
-fun main(){
-    val puzzleInst = Puzzle()
-        puzzleInst.printPuzzle()
-    println();
-    for(num in 0..5) {
-        puzzleInst.randomizePuzzle()
-        puzzleInst.printPuzzle()
-        println();
-    }
-
-}
