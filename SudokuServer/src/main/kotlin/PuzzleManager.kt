@@ -48,45 +48,45 @@ class PuzzleManager(private val seed: String = "53467891267219534819834256785976
         }
     }
 
-    fun swapRows(blockA: Int, blockB: Int, newPuzzle: Array<Array<String>>): Array<Array<String>> {
-        //We can not swap individual rows but will have to swap 9x3 rows...Ie) if the puzzle is made up of 9 chunks of  3x3 grids can we need to swap 3 3x3 grids for a whole row.
+    fun swapRows(blockA: Int, blockB: Int) {
 
-        if (blockA == blockB) {
-            return newPuzzle
+        if (blockA == blockB) return  // No change if the blocks numbers are the same
+
+        if((blockA in 0..2) == false || (blockB in 0..2 == false)){
+            throw IllegalArgumentException("Row swap values must be between [0-2]")
         }
 
+        // Swap the rows directly in the puzzle
         for (i in 0..2) {
-            val temp = newPuzzle[blockA * 3 + i]
-            newPuzzle[blockA * 3 + i] = newPuzzle[blockB * 3 + i]
-            newPuzzle[blockB * 3 + i] = temp
+            val temp = puzzle[blockA * 3 + i]
+            puzzle[blockA * 3 + i] = puzzle[blockB * 3 + i]
+            puzzle[blockB * 3 + i] = temp
         }
-        return newPuzzle
     }
 
-    fun swapColumns(blockA: Int, blockB: Int, newPuzzle: Array<Array<String>>): Array<Array<String>> {
-        //We can not swap individual rows but will have to swap 3x9 rows...Ie) if the puzzle is made up of 9 chunks of  3x3 grids can we need to swap 3 3x3 grids for a whole row.
+    fun swapColumns(blockA: Int, blockB: Int) {
 
-        if (blockA == blockB) {
-            return newPuzzle
+        if (blockA == blockB) return  // No change if the blocks numbers are the same
+
+        if((blockA in 0..2) == false || (blockB in 0..2 == false)){
+            throw IllegalArgumentException("Column swap values must be between [0-2]")
         }
 
-        for (row in newPuzzle) {
+        // Swap the columns directly in the puzzle
+        for (row in puzzle) {
             for (i in 0..2) {
                 val temp = row[blockA * 3 + i]
                 row[blockA * 3 + i] = row[blockB * 3 + i]
                 row[blockB * 3 + i] = temp
             }
         }
-        return newPuzzle
     }
 
-    fun swapSymbols(symbolA: String, symbolB: String, newPuzzle: Array<Array<String>>): Array<Array<String>> {
+    fun swapSymbols(symbolA: String, symbolB: String) {
+        if (symbolA == symbolB) return  // No change if symbols are the same
 
-        if(symbolA == symbolB){
-            return newPuzzle
-        }
-
-        for (row in newPuzzle) {
+        // Swap the symbols directly in the puzzle
+        for (row in puzzle) {
             for (col in row.indices) {
                 when (row[col]) {
                     symbolA -> row[col] = symbolB
@@ -94,7 +94,6 @@ class PuzzleManager(private val seed: String = "53467891267219534819834256785976
                 }
             }
         }
-        return newPuzzle
     }
 
     fun puzzleToSeed(): String {
@@ -108,22 +107,18 @@ class PuzzleManager(private val seed: String = "53467891267219534819834256785976
     }
 
     fun randomizePuzzle() {
-        val newPuzzle = puzzle.map { it.clone() }.toTypedArray()
         val numRandomChanges = (1..25).random()
 
-        val actions = listOf<(Array<Array<String>>) -> Array<Array<String>>>(
-            { newPuzzle -> swapRows((0..2).random(), (0..2).random(), newPuzzle) },
-            { newPuzzle -> swapColumns((0..2).random(), (0..2).random(), newPuzzle) },
-            { newPuzzle -> swapSymbols((1..9).random().toString(), (1..9).random().toString(), newPuzzle) }
+        val actions = listOf(
+            { swapRows((0..2).random(), (0..2).random()) },
+            { swapColumns((0..2).random(), (0..2).random()) },
+            { swapSymbols((1..9).random().toString(), (1..9).random().toString()) }
         )
 
         for (iteration in 1..numRandomChanges) {
             val action = actions.random()  // Select a random action
-            action(newPuzzle)  // Apply the selected action to the current puzzle
+            action.invoke()  // Perform the random action
         }
-
-        setGrid(newPuzzle);
-
     }
 
 
