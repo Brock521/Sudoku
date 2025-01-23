@@ -18,6 +18,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/SudokuServer">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -66,6 +69,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build SudokuServer.executor": "Run",
+    "Gradle.PuzzleManagerTests.executor": "Run",
+    "Gradle.PuzzleManagerTests.swapColumns.executor": "Run",
+    "Gradle.PuzzleManagerTests.swapRows.executor": "Debug",
+    "Gradle.PuzzleManagerTests.swapSymbols.executor": "Run",
     "Gradle.PuzzleTests.defaultSeedToPuzzle.executor": "Run",
     "Gradle.PuzzleTests.executor": "Run",
     "Gradle.PuzzleTests.seedToPuzzle.executor": "Run",
@@ -73,6 +80,7 @@
     "Kotlin.PuzzleObfuscatorKt.executor": "Run",
     "Kotlin.PuzzleValidatorKt.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "G:/My Drive/ProgrammingProjects/Sudoku"
@@ -85,7 +93,103 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.PuzzleTests">
+  <component name="RunManager" selected="Gradle.PuzzleManagerTests">
+    <configuration name="PuzzleManagerTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/SudokuServer" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;PuzzleManagerTests&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="PuzzleManagerTests.swapColumns" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/SudokuServer" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;PuzzleManagerTests.swapColumns&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="PuzzleManagerTests.swapRows" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/SudokuServer" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;PuzzleManagerTests.swapRows&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="PuzzleManagerTests.swapSymbols" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/SudokuServer" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;PuzzleManagerTests.swapSymbols&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="PuzzleTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -110,92 +214,13 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="PuzzleTests.defaultSeedToPuzzle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/SudokuServer" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;PuzzleTests.defaultSeedToPuzzle&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="PuzzleTests.seedToPuzzle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/SudokuServer" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;PuzzleTests.seedToPuzzle&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="PuzzleTests.swapRows" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/SudokuServer" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;PuzzleTests.swapRows&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="PuzzleValidatorKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.puzzle.PuzzleValidatorKt" />
-      <module name="org.example.Sudoku.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PuzzleManagerTests" />
+        <item itemvalue="Gradle.PuzzleManagerTests.swapColumns" />
+        <item itemvalue="Gradle.PuzzleManagerTests.swapRows" />
+        <item itemvalue="Gradle.PuzzleManagerTests.swapSymbols" />
         <item itemvalue="Gradle.PuzzleTests" />
-        <item itemvalue="Gradle.PuzzleTests.swapRows" />
-        <item itemvalue="Gradle.PuzzleTests.seedToPuzzle" />
-        <item itemvalue="Gradle.PuzzleTests.defaultSeedToPuzzle" />
-        <item itemvalue="Kotlin.PuzzleValidatorKt" />
       </list>
     </recent_temporary>
   </component>
@@ -224,13 +249,31 @@
       <option name="project" value="LOCAL" />
       <updated>1737582228710</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Re-adjust the swapRows(), swapColumns(), and swapSymbols() to modify the puzzle directly instead of weird functionality it had before returning an array was already getting modified as reference through the arguments.">
+      <option name="closed" value="true" />
+      <created>1737604633747</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737604633747</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finishing add test for manipulation functions swapRows(), swapColumns(), and swapSymbols()">
+      <option name="closed" value="true" />
+      <created>1737605585396</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737605585396</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding function to convert a puzzle to seed in the Puzzle class. Added PuzzleObfuscator.kt class which adds a boolean tag to all values in a puzzle seed which assigning its visibility." />
     <MESSAGE value="Removing .idea folder from git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removing .idea folder from git" />
+    <MESSAGE value="Re-adjust the swapRows(), swapColumns(), and swapSymbols() to modify the puzzle directly instead of weird functionality it had before returning an array was already getting modified as reference through the arguments." />
+    <MESSAGE value="Finishing add test for manipulation functions swapRows(), swapColumns(), and swapSymbols()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finishing add test for manipulation functions swapRows(), swapColumns(), and swapSymbols()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -239,6 +282,16 @@
           <properties class="org.opentest4j.AssertionFailedError" package="org.opentest4j" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/SudokuServer/src/test/kotlin/PuzzleManagerTests.kt</url>
+          <line>81</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/SudokuServer/src/test/kotlin/PuzzleManagerTests.kt</url>
+          <line>74</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
