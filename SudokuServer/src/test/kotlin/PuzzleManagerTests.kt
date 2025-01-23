@@ -7,10 +7,11 @@ class PuzzleManagerTests {
 
     lateinit var testSeed:String
     lateinit var testPuzzle:Array<Array<String>>
-
+    lateinit var  defaultSeed:String
     @BeforeEach
     fun generatePuzzle(){
         testSeed = "192543687657189324438627159824916573365278491719354268971462835243895716586731942"
+        defaultSeed = "534678912672195348198342567859761423426853791713924856961537284287419635345286179"
         testPuzzle = arrayOf(
             arrayOf("1", "9", "2", "5", "4", "3", "6", "8", "7"),
             arrayOf("6", "5", "7", "1", "8", "9", "3", "2", "4"),
@@ -67,18 +68,77 @@ class PuzzleManagerTests {
     @Test
     fun swapRows() {
 
+
+        val puzzleManager = PuzzleManager(testSeed)
+        testPuzzle = puzzleManager.getGrid()
+
+        val originalPuzzle = Array(9) { row -> testPuzzle[row].clone() }
+
+        puzzleManager.swapRows(0,2)
+
+        val swappedGrid = puzzleManager.getGrid()
+
+        //Bottom Row
+        assertArrayEquals(swappedGrid[0],originalPuzzle[6])
+        assertArrayEquals(swappedGrid[1],originalPuzzle[7])
+        assertArrayEquals(swappedGrid[2],originalPuzzle[8])
+
+        //Top row
+        assertArrayEquals(swappedGrid[6],originalPuzzle[0])
+        assertArrayEquals(swappedGrid[7],originalPuzzle[1])
+        assertArrayEquals(swappedGrid[8],originalPuzzle[2])
+
+
     }
 
     @Test
-    fun swapColumns(){
+    fun swapColumns() {
 
+        val puzzleManager = PuzzleManager(testSeed)
+        val testPuzzle = puzzleManager.getGrid()
+
+        val originalPuzzle = Array(9) { row -> testPuzzle[row].clone() }
+
+        puzzleManager.swapColumns(0, 1)
+
+        val swappedGrid = puzzleManager.getGrid()
+
+        // Ensure the columns have been swapped
+        for (row in 0 until 9) {
+            assertEquals(swappedGrid[row][3], originalPuzzle[row][0])
+            assertEquals(swappedGrid[row][4], originalPuzzle[row][1])
+            assertEquals(swappedGrid[row][5], originalPuzzle[row][2])
+
+            assertEquals(swappedGrid[row][0], originalPuzzle[row][3])
+            assertEquals(swappedGrid[row][1], originalPuzzle[row][4])
+            assertEquals(swappedGrid[row][2], originalPuzzle[row][5])
+        }
     }
 
 
     @Test
     fun swapSymbols() {
+        val puzzleManager = PuzzleManager(testSeed)
+        val testPuzzle = puzzleManager.getGrid()
 
+        // Create a deep copy of the puzzle to preserve the original state
+        val originalPuzzle = Array(9) { row -> testPuzzle[row].clone() }
 
+        // Swap symbols "1" and "9"
+        puzzleManager.swapSymbols("1", "9")
+
+        val swappedGrid = puzzleManager.getGrid()
+
+        // Ensure that the symbols "1" and "9" are swapped
+        for (row in 0 until 9) {
+            for (col in 0 until 9) {
+                when (originalPuzzle[row][col]) {
+                    "1" -> assertEquals(swappedGrid[row][col], "9")  // Symbol "1" should become "9"
+                    "9" -> assertEquals(swappedGrid[row][col], "1")  // Symbol "9" should become "1"
+                    else -> assertEquals(swappedGrid[row][col], originalPuzzle[row][col])  // Other symbols remain unchanged
+                }
+            }
+        }
     }
 
 }
