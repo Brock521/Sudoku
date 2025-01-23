@@ -69,7 +69,7 @@
     "Gradle.PuzzleTests.defaultSeedToPuzzle.executor": "Run",
     "Gradle.PuzzleTests.executor": "Run",
     "Gradle.PuzzleTests.seedToPuzzle.executor": "Run",
-    "Gradle.PuzzleTests.swapRows.executor": "Debug",
+    "Gradle.PuzzleTests.swapRows.executor": "Run",
     "Kotlin.PuzzleObfuscatorKt.executor": "Run",
     "Kotlin.PuzzleValidatorKt.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -85,7 +85,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.PuzzleTests.swapRows">
+  <component name="RunManager" selected="Gradle.PuzzleTests">
     <configuration name="PuzzleTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -191,8 +191,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.PuzzleTests.swapRows" />
         <item itemvalue="Gradle.PuzzleTests" />
+        <item itemvalue="Gradle.PuzzleTests.swapRows" />
         <item itemvalue="Gradle.PuzzleTests.seedToPuzzle" />
         <item itemvalue="Gradle.PuzzleTests.defaultSeedToPuzzle" />
         <item itemvalue="Kotlin.PuzzleValidatorKt" />
@@ -239,14 +239,6 @@
           <properties class="org.opentest4j.AssertionFailedError" package="org.opentest4j" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/SudokuServer/src/test/kotlin/PuzzleTests.kt</url>
-          <line>70</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

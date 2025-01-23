@@ -1,6 +1,6 @@
 package com.example.puzzle;
 
-class Puzzle(private val seed: String = "534678912672195348198342567859761423426853791713924856961537284287419635345286179") {
+class PuzzleManager(private val seed: String = "534678912672195348198342567859761423426853791713924856961537284287419635345286179") {
 
     private val puzzle: Array<Array<String>> = loadSeed(seed)
 

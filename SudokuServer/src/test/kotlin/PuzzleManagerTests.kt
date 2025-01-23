@@ -1,10 +1,9 @@
-import com.example.puzzle.Puzzle
+import com.example.puzzle.PuzzleManager
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class PuzzleTests {
+class PuzzleManagerTests {
 
     lateinit var testSeed:String
     lateinit var testPuzzle:Array<Array<String>>
@@ -27,7 +26,7 @@ class PuzzleTests {
 
     @Test
     fun defaultSeedToPuzzle(){
-        var puzzleInst = Puzzle()
+        var puzzleInst = PuzzleManager()
         val defaultPuzzleGrid = puzzleInst.getGrid()
         val defaultPuzzleSolution = arrayOf<Array<String>>(
             arrayOf("5", "3", "4", "6", "7", "8", "9", "1", "2"),
@@ -48,7 +47,7 @@ class PuzzleTests {
 
     @Test
     fun seedToPuzzle() {
-        val generatedPuzzle = Puzzle(testSeed).getGrid()
+        val generatedPuzzle = PuzzleManager(testSeed).getGrid()
 
        assertArrayEquals(generatedPuzzle,testPuzzle, "Puzzles do not match")
 
@@ -58,7 +57,7 @@ class PuzzleTests {
     @Test
     fun puzzleToSeed(){
 
-        val puzzleInst = Puzzle()
+        val puzzleInst = PuzzleManager()
         puzzleInst.setGrid(testPuzzle)
         val puzzleSeed = puzzleInst.puzzleToSeed()
 

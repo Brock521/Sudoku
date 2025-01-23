@@ -6,7 +6,7 @@ class PuzzleValidator(){
         if(puzzleSeed.length != 81){
             return false
         }
-        return validatePuzzle(Puzzle(puzzleSeed).getGrid())
+        return validatePuzzle(PuzzleManager(puzzleSeed).getGrid())
     }
 
     fun validatePuzzle(puzzle: Array<Array<String>>) : Boolean{
