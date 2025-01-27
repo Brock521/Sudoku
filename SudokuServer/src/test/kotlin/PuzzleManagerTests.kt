@@ -60,7 +60,7 @@ class PuzzleManagerTests {
 
         val puzzleInst = PuzzleManager()
         puzzleInst.setGrid(testPuzzle)
-        val puzzleSeed = puzzleInst.puzzleToSeed()
+        val puzzleSeed = puzzleInst.getSeed()
 
         assertEquals(puzzleSeed,testSeed)
     }

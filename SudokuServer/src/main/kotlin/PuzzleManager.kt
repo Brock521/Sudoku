@@ -96,7 +96,7 @@ class PuzzleManager(private val seed: String = "53467891267219534819834256785976
         }
     }
 
-    fun puzzleToSeed(): String {
+    fun getSeed(): String {
         val builder = StringBuilder()
         for (row in puzzle) {
             for (cell in row) {
