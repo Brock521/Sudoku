@@ -141,4 +141,20 @@ class PuzzleManagerTests {
         }
     }
 
+    @Test
+    fun randomize() {
+        val puzzleManager = PuzzleManager(testSeed)
+        val puzzle = puzzleManager.getGrid()
+
+        assertArrayEquals(puzzle, testPuzzle, "The built puzzle does not match the test puzzle")
+
+        // Randomize the puzzle
+        puzzleManager.randomizePuzzle()
+
+        assertFalse(
+            puzzleManager.getGrid().contentDeepEquals(testPuzzle),
+            "The randomized puzzle matches the test puzzle"
+        )
+    }
+
 }
