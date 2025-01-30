@@ -1,60 +1,36 @@
 package com.example.puzzle
 
-import java.util.zip.DataFormatException
+    class PuzzleObfuscator(puzzleSeed: String) {
 
-class PuzzleObfuscator(puzzleSeed: String) {
+    data class ObfuscatedValue(var value: Char, val obfuscated: Boolean)
 
-    data class ObfuscatedValue(val value: Char, val obfuscated: Boolean)
-
-    var obfuscatedPuzzle: List<ObfuscatedValue?>
+    var obfuscatedPuzzle: List<ObfuscatedValue>
 
     init {
+        // Ensure the puzzle seed is valid (81 characters)
+        require(puzzleSeed.length == 81) { "Puzzle seed must have exactly 81 characters." }
 
-        obfuscatedPuzzle = List<ObfuscatedValue?>(0){it -> null}
-
+        // Initialize the puzzle with obfuscated values
         val minHints = 17
         val maxHints = 25
-        val numHints = (Math.random() * (maxHints - minHints)  + minHints).toInt()
-        obfuscatePuzzle(puzzleSeed,numHints)
+        val numHints = (Math.random() * (maxHints - minHints) + minHints).toInt()
+        obfuscatedPuzzle = obfuscatePuzzle(puzzleSeed, numHints)
     }
 
+    private fun obfuscatePuzzle(puzzleSeed: String, numHints: Int): List<ObfuscatedValue> {
+        val visibleIndexes = mutableSetOf<Int>()
 
-    fun obfuscatePuzzle(puzzleSeed: String, numHints:Int) {
-        var visibleIndexes = Array<Int>(numHints) { it -> -1 }
-
-        var uniqueIndexNum = 0;
-        while (uniqueIndexNum < visibleIndexes.size) {
-
+        // Randomly select unique indexes for visible cells
+        while (visibleIndexes.size < numHints) {
             val index = (Math.random() * 81).toInt()
-            if (visibleIndexes.contains(index) == false) {
-                visibleIndexes[uniqueIndexNum] = index
-                uniqueIndexNum++
-            }
-
+            visibleIndexes.add(index)
         }
 
-        var tempObfuscatedPuzzle = MutableList<ObfuscatedValue?>(0){it -> null}
-
-        for(index in 0 until 81){
-
-            var obfuscated = false
-
-            if(index in visibleIndexes){
-                obfuscated = true
-            } else {
-                obfuscated = false
-            }
-
-            tempObfuscatedPuzzle.add(ObfuscatedValue(puzzleSeed.get(index),obfuscated))
-
+        // Generate the obfuscated puzzle
+        return List(81) { index ->
+            val obfuscated = !visibleIndexes.contains(index) // Obfuscate if index is not in visibleIndexes
+            ObfuscatedValue(puzzleSeed[index], obfuscated)
         }
-
-        if(tempObfuscatedPuzzle.size == 81){
-            obfuscatedPuzzle = tempObfuscatedPuzzle
-        } else {
-            throw IllegalArgumentException("Size of the puzzle does not match ")
-        }
-
     }
 
     fun printObfuscatedPuzzle() {
@@ -66,10 +42,10 @@ class PuzzleObfuscator(puzzleSeed: String) {
             val rowString = buildString {
                 for (col in 0 until 9) {
                     val index = row * 9 + col
-                    val value = if (obfuscatedPuzzle[index]?.obfuscated == true) {
-                        obfuscatedPuzzle[index]?.value.toString()
+                    val value = if (obfuscatedPuzzle[index].obfuscated) {
+                        "*" // Use '*' for obfuscated values
                     } else {
-                        " "
+                        obfuscatedPuzzle[index].value.toString()
                     }
                     append(value)
                     if (col % 3 == 2 && col < 8) {
@@ -82,5 +58,4 @@ class PuzzleObfuscator(puzzleSeed: String) {
             println(rowString)
         }
     }
-
 }

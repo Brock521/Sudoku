@@ -67,4 +67,48 @@ class PuzzleValidator(){
             return true
         }
 
+    // This method counts errors in the rows (duplicate values).
+    fun countRowErrors(puzzle: Array<Array<String>>): Int {
+        var rowErrors = 0
+
+        for (x in 0 until puzzle.size) {
+            val row = puzzle[x]
+            if (row.distinct().size != row.size) {
+                rowErrors++
+            }
+        }
+
+        return rowErrors
+    }
+
+    // This method counts errors in the columns (duplicate values).
+    fun countColumnErrors(puzzle: Array<Array<String>>): Int {
+        var columnErrors = 0
+
+        for (x in 0 until puzzle.size) {
+            val col = (0 until puzzle.size).map { puzzle[it][x] }
+            if (col.distinct().size != col.size) {
+                columnErrors++
+            }
+        }
+
+        return columnErrors
+    }
+
+    // This method counts errors in the 3x3 sections (duplicate values).
+    fun countSectionErrors(puzzle: Array<Array<String>>): Int {
+        var sectionErrors = 0
+
+        // Validate 3x3 sections one at a time
+        for (rowStart in 0 until 9 step 3) {
+            for (colStart in 0 until 9 step 3) {
+                if (!validateSection(puzzle, rowStart, colStart)) {
+                    sectionErrors++
+                }
+            }
+        }
+
+        return sectionErrors
+    }
+
 }
