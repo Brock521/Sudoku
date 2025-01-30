@@ -1,4 +1,4 @@
-package com.example.puzzle
+package sudoku.server
 
 class PuzzleValidator(){
 

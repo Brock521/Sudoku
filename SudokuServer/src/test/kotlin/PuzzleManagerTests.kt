@@ -1,4 +1,6 @@
-import com.example.puzzle.PuzzleManager
+package sudoku.server.tests
+
+import sudoku.server.PuzzleManager
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
